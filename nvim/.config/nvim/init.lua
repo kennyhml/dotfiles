@@ -16,18 +16,17 @@ vim.o.cursorline = true
 vim.o.scrolloff = 20
 vim.o.mouse = 'a'
 vim.o.confirm = true
-
-vim.o.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
-
--- Honestly not quite sure what this does yet
-vim.o.breakindent = true
+vim.opt.wrap = false
 
 vim.o.undofile = true
 vim.o.splitright = true
 vim.o.splitbelow = true
 vim.o.inccommand = 'split'
 vim.o.signcolumn = 'yes'
+
+vim.opt.shiftwidth = 4
+vim.opt.tabstop = 4
+vim.opt.expandtab = true
 
 -- Searching
 vim.o.ignorecase = true
