@@ -32,7 +32,7 @@ return {
             Comment = { fg = colors.palette.springGreen },
             Function = { fg = colors.palette.carpYellow },
             Identifier = { fg = colors.palette.waveAqua2 },
-            Type = { fg = colors.palette.waveRed },
+            Type = { fg = colors.palette.crystalBlue },
             ['@variable'] = { fg = colors.palette.lightBlue },
 
             TelescopeTitle = { fg = theme.ui.special, bold = true },
