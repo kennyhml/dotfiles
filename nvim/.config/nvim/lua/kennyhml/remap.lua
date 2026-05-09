@@ -4,12 +4,6 @@ vim.g.maplocalleader = ' '
 
 vim.keymap.set('n', '<leader>pv', vim.cmd.Ex, { desc = 'Open the [P]roject [V]iwer' })
 
--- Dont cheat!
-vim.keymap.set('n', '<left>', '<Nop>')
-vim.keymap.set('n', '<right>', '<Nop>')
-vim.keymap.set('n', '<up>', '<Nop>')
-vim.keymap.set('n', '<down>', '<Nop>')
-
 vim.keymap.set('n', 'gh', vim.lsp.buf.hover, { desc = '[G]et [H]elp (Hover documentation)' })
 
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })

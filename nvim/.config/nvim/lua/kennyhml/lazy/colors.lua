@@ -33,7 +33,12 @@ return {
             Function = { fg = colors.palette.carpYellow },
             Identifier = { fg = colors.palette.waveAqua2 },
             Type = { fg = colors.palette.crystalBlue },
+            Constant = { fg = colors.palette.waveRed },
+            PreProc = { fg = colors.palette.autumnYellow },
+
             ['@variable'] = { fg = colors.palette.lightBlue },
+            -- Dont treat stuff like self etc. as special variables
+            ['@variable.builtin'] = { fg = colors.palette.lightBlue },
 
             TelescopeTitle = { fg = theme.ui.special, bold = true },
             TelescopePromptNormal = { bg = theme.ui.bg_p1 },
@@ -47,7 +52,6 @@ return {
         theme = 'dragon',
       }
 
-      local test = 10
       vim.cmd 'colorscheme kanagawa'
     end,
   },

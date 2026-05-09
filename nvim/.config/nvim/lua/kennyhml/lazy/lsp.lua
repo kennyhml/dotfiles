@@ -74,6 +74,7 @@ return {
     local servers = {
       rust_analyzer = {},
       stylua = {},
+      clangd = {},
       lua_ls = {
         on_init = function(client)
           if client.workspace_folders then

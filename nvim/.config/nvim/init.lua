@@ -11,6 +11,7 @@ end)
 vim.opt.guicursor = 'a:block'
 vim.g.have_nerd_font = true -- Jetbrains Mono
 vim.o.relativenumber = true
+vim.o.laststatus = 0 -- no status line
 vim.o.showmode = false
 vim.o.cursorline = true
 vim.o.scrolloff = 20
