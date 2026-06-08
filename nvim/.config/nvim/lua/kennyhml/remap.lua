@@ -10,10 +10,10 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 
 -- Move lines up and down with J and K, I really dont care about losing the
 -- line merging capabilities but this means we need to find a replacement for K
-vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
-vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
-vim.keymap.set('n', 'J', ':m .+1<CR>==')
-vim.keymap.set('n', 'K', ':m .-2<CR>==')
+vim.keymap.set('v', '<S-Down>', ":m '>+1<CR>gv=gv")
+vim.keymap.set('v', '<S-Up>', ":m '<-2<CR>gv=gv")
+vim.keymap.set('n', '<S-Down>', ':m .+1<CR>==')
+vim.keymap.set('n', '<S-Up>', ':m .-2<CR>==')
 
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')

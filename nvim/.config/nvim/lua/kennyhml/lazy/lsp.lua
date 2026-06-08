@@ -75,6 +75,11 @@ return {
       rust_analyzer = {},
       stylua = {},
       clangd = {},
+      basedpyright = {},
+      yamlls = {},
+      ruff = {
+        on_attach = function(client, bufnr) client.server_capabilities.hoverProvider = false end,
+      },
       lua_ls = {
         on_init = function(client)
           if client.workspace_folders then
