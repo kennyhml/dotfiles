@@ -32,6 +32,8 @@ return {
           vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
         end
 
+        map('gd', vim.lsp.buf.definition, 'Go to Definition')
+
         -- Rename the variable under your cursor.
         --  Most Language Servers support renaming across files, etc.
         map('grn', vim.lsp.buf.rename, '[R]e[n]ame')
@@ -39,8 +41,7 @@ return {
         -- Execute a code action, usually your cursor needs to be on top of an error
         map('gra', vim.lsp.buf.code_action, '[G]oto Code [A]ction', { 'n', 'x' })
 
-        -- WARN: This is not Goto Definition, this is Goto Declaration.
-        map('grD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+        map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
         -- When you move your cursor, the highlights will be cleared (the second autocommand).
         local client = vim.lsp.get_client_by_id(event.data.client_id)
@@ -77,6 +78,7 @@ return {
       clangd = {},
       basedpyright = {},
       yamlls = {},
+      ts_ls = {},
       ruff = {
         on_attach = function(client, bufnr) client.server_capabilities.hoverProvider = false end,
       },
