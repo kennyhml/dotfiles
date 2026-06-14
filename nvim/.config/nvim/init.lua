@@ -21,6 +21,12 @@ vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 vim.opt.expandtab = true
 
+-- Swap panes with control + arrow keys, that combination is unused anyway
+vim.keymap.set('n', '<C-Left>', '<C-w>h', { desc = 'Move to left window' })
+vim.keymap.set('n', '<C-Down>', '<C-w>j', { desc = 'Move to lower window' })
+vim.keymap.set('n', '<C-Up>', '<C-w>k', { desc = 'Move to upper window' })
+vim.keymap.set('n', '<C-Right>', '<C-w>l', { desc = 'Move to right window' })
+
 -- Searching
 vim.o.ignorecase = true
 vim.o.smartcase = true

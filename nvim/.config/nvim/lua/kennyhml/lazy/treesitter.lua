@@ -1,12 +1,26 @@
-return { -- Highlight, edit, and navigate code
+return {
   'nvim-treesitter/nvim-treesitter',
   lazy = false,
   build = ':TSUpdate',
   branch = 'main',
-  -- [[ Configure Treesitter ]] See `:help nvim-treesitter-intro`
   config = function()
-    -- ensure basic parser are installed
-    local parsers = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'rust' }
+    local parsers = {
+      'bash',
+      'c',
+      'diff',
+      'html',
+      'lua',
+      'luadoc',
+      'markdown',
+      'markdown_inline',
+      'query',
+      'vim',
+      'vimdoc',
+      'rust',
+      'javascript',
+      'typescript',
+      'python',
+    }
     require('nvim-treesitter').install(parsers)
 
     ---@param buf integer
@@ -16,9 +30,24 @@ return { -- Highlight, edit, and navigate code
       vim.treesitter.start(buf, language)
 
       local has_indent_query = vim.treesitter.query.get(language, 'indents') ~= nil
-      if has_indent_query then vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()" end
+      -- if has_indent_query then vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()" end
     end
 
+    vim.api.nvim_create_autocmd('User', {
+      pattern = 'TSUpdate',
+      callback = function()
+        require('nvim-treesitter.parsers').abap = {
+          install_info = {
+            path = '~/dev/tree-sitter-abap',
+            queries = 'queries',
+          },
+        }
+        vim.filetype.add { extension = { intf = 'abap' } }
+        vim.treesitter.language.register('abap', { 'intf' })
+      end,
+    })
+
+    --- Setup an autocmd to run when a new buffer opens to run tree-sitter
     local available_parsers = require('nvim-treesitter').get_available()
     vim.api.nvim_create_autocmd('FileType', {
       callback = function(args)

@@ -51,6 +51,7 @@ return {
       }
 
       vim.cmd 'colorscheme kanagawa'
+      vim.api.nvim_set_hl(0, 'Visual', { bg = '#444444', fg = 'NONE', bold = true })
     end,
   },
 }
