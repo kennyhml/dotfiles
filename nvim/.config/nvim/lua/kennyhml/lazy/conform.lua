@@ -28,6 +28,8 @@ return { -- Autoformat
     formatters_by_ft = {
       lua = { 'stylua' },
       javascript = { 'prettierd' },
+      json = { 'prettierd' },
+      html = { 'prettierd' },
     },
   },
 }

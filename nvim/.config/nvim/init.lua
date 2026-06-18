@@ -27,6 +27,10 @@ vim.keymap.set('n', '<C-Down>', '<C-w>j', { desc = 'Move to lower window' })
 vim.keymap.set('n', '<C-Up>', '<C-w>k', { desc = 'Move to upper window' })
 vim.keymap.set('n', '<C-Right>', '<C-w>l', { desc = 'Move to right window' })
 
+-- Keep the selection when indenting / dedenting
+vim.keymap.set('v', '>', '>gv', { noremap = true, silent = true })
+vim.keymap.set('v', '<', '<gv', { noremap = true, silent = true })
+
 -- Searching
 vim.o.ignorecase = true
 vim.o.smartcase = true
