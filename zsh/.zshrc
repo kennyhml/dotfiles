@@ -7,6 +7,7 @@ fi
 
 export PATH="$HOME/.cargo/bin:$PATH"
 export ZSH="$HOME/.oh-my-zsh"
+export BROWSER=wslview
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 zstyle ':omz:update' mode reminder  # just remind me to update when it's time
