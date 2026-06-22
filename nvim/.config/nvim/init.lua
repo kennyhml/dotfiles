@@ -61,3 +61,13 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
   callback = function() vim.hl.on_yank() end,
 })
+
+vim.keymap.set('n', 'p', function()
+  vim.cmd 'normal! p'
+  vim.cmd [[%s/\r//ge]]
+end, { noremap = true })
+
+vim.keymap.set('n', 'P', function()
+  vim.cmd 'normal! P'
+  vim.cmd [[%s/\r//ge]]
+end, { noremap = true })
