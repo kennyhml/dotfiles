@@ -1,7 +1,6 @@
 require 'kennyhml'
 
 vim.opt.guicursor = 'a:block'
-vim.g.have_nerd_font = true -- Jetbrains Mono
 vim.o.relativenumber = true
 vim.o.laststatus = 0 -- no status line
 vim.o.showmode = false
@@ -30,6 +29,8 @@ vim.keymap.set('n', '<C-Right>', '<C-w>l', { desc = 'Move to right window' })
 -- Keep the selection when indenting / dedenting
 vim.keymap.set('v', '>', '>gv', { noremap = true, silent = true })
 vim.keymap.set('v', '<', '<gv', { noremap = true, silent = true })
+
+vim.keymap.set('v', '<leader>p', '"_dP', { desc = 'Paste (keeping register)' })
 
 -- Searching
 vim.o.ignorecase = true

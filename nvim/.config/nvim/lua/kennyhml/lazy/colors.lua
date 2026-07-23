@@ -6,12 +6,16 @@ return {
       require('kanagawa').setup {
         compile = false,
         undercurl = true,
-        commentStyle = { italic = true },
-        keywordStyle = { italic = true },
+        commentStyle = { italic = false },
+        keywordStyle = { italic = false },
         typeStyle = {},
         transparent = true,
         dimInactive = true,
-
+        terminalColors = true,
+        theme = 'dragon',
+        background = {
+          dark = 'wave',
+        },
         colors = {
           theme = {
             all = {
@@ -24,18 +28,19 @@ return {
 
         overrides = function(colors)
           local theme = colors.theme
+
           return {
-            -- Basic tokens
             String = { fg = colors.palette.surimiOrange },
             Comment = { fg = colors.palette.springGreen },
             Function = { fg = colors.palette.carpYellow },
-            Identifier = { fg = colors.palette.waveAqua2 },
             Type = { fg = colors.palette.crystalBlue },
             Constant = { fg = colors.palette.waveRed },
             PreProc = { fg = colors.palette.autumnYellow },
+            Boolean = { bold = false },
+            Identifier = { fg = colors.palette.autumnYellow },
 
             ['@variable'] = { fg = colors.palette.lightBlue },
-            -- Dont treat stuff like self etc. as special variables
+            ['@variable.member'] = { fg = colors.palette.autumnYellow },
             ['@variable.builtin'] = { fg = colors.palette.lightBlue },
 
             TelescopeTitle = { fg = theme.ui.special, bold = true },
@@ -47,11 +52,9 @@ return {
             TelescopePreviewBorder = { bg = theme.ui.bg_dim, fg = theme.ui.bg_dim },
           }
         end,
-        theme = 'dragon',
       }
 
       vim.cmd 'colorscheme kanagawa'
-      vim.api.nvim_set_hl(0, 'Visual', { bg = '#444444', fg = 'NONE', bold = true })
     end,
   },
 }

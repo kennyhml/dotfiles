@@ -42,8 +42,7 @@ return {
             queries = 'queries',
           },
         }
-        vim.filetype.add { extension = { intf = 'abap' } }
-        vim.treesitter.language.register('abap', { 'intf' })
+        vim.treesitter.language.register('abap', {})
       end,
     })
 
