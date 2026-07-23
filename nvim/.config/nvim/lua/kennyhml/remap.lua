@@ -3,15 +3,23 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 vim.keymap.set('n', '<leader>pv', vim.cmd.Ex, { desc = 'Open the [P]roject [V]iwer' })
-
-vim.keymap.set('n', 'gh', vim.lsp.buf.hover, { desc = '[G]et [H]elp (Hover documentation)' })
-
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
--- Move lines up and down with J and K, I really dont care about losing the
--- line merging capabilities but this means we need to find a replacement for K
-vim.keymap.set('v', '<S-Down>', ":m '>+1<CR>gv=gv")
-vim.keymap.set('v', '<S-Up>', ":m '<-2<CR>gv=gv")
-vim.keymap.set('n', '<S-Down>', ':m .+1<CR>==')
-vim.keymap.set('n', '<S-Up>', ':m .-2<CR>==')
+-- Remove highlightings with escape (usually mode swap)
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+
+-- Preserve selection when indenting / dedenting
+vim.keymap.set('v', '>', '>gv', { noremap = true, silent = true })
+vim.keymap.set('v', '<', '<gv', { noremap = true, silent = true })
+
+-- Remove carriage returns when pasting (WSL grrrr)
+vim.keymap.set('n', 'p', function()
+  vim.cmd 'normal! p'
+  vim.cmd [[%s/\r//ge]]
+end, { noremap = true })
+
+-- Same paste behavior when we paste over a text selection
+vim.keymap.set({ 'n', 'x' }, 'P', [[P<Cmd>silent! keepjumps keeppatterns %s/\r//g<CR>]], {
+  noremap = true,
+  desc = 'Paste without carriage returns',
+})
