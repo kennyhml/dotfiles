@@ -1,4 +1,4 @@
-return { -- Autoformat
+return {
   'stevearc/conform.nvim',
   event = { 'BufWritePre' },
   cmd = { 'ConformInfo' },
@@ -10,8 +10,6 @@ return { -- Autoformat
       desc = '[F]ormat buffer',
     },
   },
-  ---@module 'conform'
-  ---@type conform.setupOpts
   opts = {
     notify_on_error = false,
     format_on_save = function(bufnr)
@@ -28,6 +26,7 @@ return { -- Autoformat
     formatters_by_ft = {
       lua = { 'stylua' },
       javascript = { 'prettierd' },
+      typescript = { 'prettierd' },
       json = { 'prettierd' },
       html = { 'prettierd' },
     },

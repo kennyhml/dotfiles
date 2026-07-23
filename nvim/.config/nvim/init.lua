@@ -2,7 +2,7 @@ require 'kennyhml'
 
 vim.opt.guicursor = 'a:block'
 vim.o.relativenumber = true
-vim.o.laststatus = 0 -- no status line
+-- vim.o.laststatus = 0 -- no status line
 vim.o.showmode = false
 vim.o.cursorline = true
 vim.o.scrolloff = 20
