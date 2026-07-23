@@ -20,17 +20,9 @@ vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 vim.opt.expandtab = true
 
--- Swap panes with control + arrow keys, that combination is unused anyway
-vim.keymap.set('n', '<C-Left>', '<C-w>h', { desc = 'Move to left window' })
-vim.keymap.set('n', '<C-Down>', '<C-w>j', { desc = 'Move to lower window' })
-vim.keymap.set('n', '<C-Up>', '<C-w>k', { desc = 'Move to upper window' })
-vim.keymap.set('n', '<C-Right>', '<C-w>l', { desc = 'Move to right window' })
-
--- Keep the selection when indenting / dedenting
+-- Preserve selection when indenting / dedenting
 vim.keymap.set('v', '>', '>gv', { noremap = true, silent = true })
 vim.keymap.set('v', '<', '<gv', { noremap = true, silent = true })
-
-vim.keymap.set('v', '<leader>p', '"_dP', { desc = 'Paste (keeping register)' })
 
 -- Searching
 vim.o.ignorecase = true
@@ -63,12 +55,14 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function() vim.hl.on_yank() end,
 })
 
+-- Remove carriage returns when pasting (WSL grrrr)
 vim.keymap.set('n', 'p', function()
   vim.cmd 'normal! p'
   vim.cmd [[%s/\r//ge]]
 end, { noremap = true })
 
-vim.keymap.set('n', 'P', function()
-  vim.cmd 'normal! P'
-  vim.cmd [[%s/\r//ge]]
-end, { noremap = true })
+-- Same paste behavior when we paste over a text selection
+vim.keymap.set({ 'n', 'x' }, 'P', [[P<Cmd>silent! keepjumps keeppatterns %s/\r//g<CR>]], {
+  noremap = true,
+  desc = 'Paste without carriage returns',
+})
