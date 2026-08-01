@@ -41,7 +41,7 @@ return {
 
             ['@variable'] = { fg = colors.palette.lightBlue },
             ['@variable.member'] = { fg = colors.palette.autumnYellow },
-            ['@variable.builtin'] = { fg = colors.palette.lightBlue },
+            ['@variable.builtin'] = { fg = colors.palette.lightBlue, italic = false },
 
             TelescopeTitle = { fg = theme.ui.special, bold = true },
             TelescopePromptNormal = { bg = theme.ui.bg_p1 },

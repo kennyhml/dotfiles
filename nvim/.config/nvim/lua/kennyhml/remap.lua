@@ -24,6 +24,3 @@ vim.keymap.set({ 'n', 'x' }, 'P', [[P<Cmd>silent! keepjumps keeppatterns %s/\r//
   noremap = true,
   desc = 'Paste without carriage returns',
 })
-
-vim.keymap.set('n', '<M-Down>', '<cmd>cnext<CR>', { desc = 'Next quickfix entry' })
-vim.keymap.set('n', '<M-Up>', '<cmd>cprevious<CR>', { desc = 'Previous quickfix entry' })
