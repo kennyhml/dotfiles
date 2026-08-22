@@ -2,7 +2,7 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-vim.keymap.set('n', '<leader>pv', '<cmd>Oil<CR>', { desc = 'Open the [P]roject [V]iwer' })
+vim.keymap.set('n', '-', '<cmd>Oil<CR>', { desc = 'Open parent directory' })
 
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
@@ -13,7 +13,15 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set('v', '>', '>gv', { noremap = true, silent = true })
 vim.keymap.set('v', '<', '<gv', { noremap = true, silent = true })
 
--- Remove carriage returns when pasting (WSL grrrr)
+-- Remove carriage returns when pasting
+local default_paste = vim.paste
+vim.paste = function(lines, phase)
+  for index, line in ipairs(lines) do
+    lines[index] = line:gsub('\r', '')
+  end
+  return default_paste(lines, phase)
+end
+
 vim.keymap.set('n', 'p', function()
   vim.cmd 'normal! p'
   vim.cmd [[%s/\r//ge]]
